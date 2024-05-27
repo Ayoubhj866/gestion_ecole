@@ -24,8 +24,7 @@
 
 
     {{-- Aside --}}
-    @include('admin.aside')
-
+    @include('instructeur.aside')
 
     {{-- Content --}}
     <div class="p-4 sm:ml-64">
