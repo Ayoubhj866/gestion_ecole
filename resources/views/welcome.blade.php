@@ -921,10 +921,7 @@
                     @if (Route::has('login'))
                         <nav class="flex justify-end flex-1 -mx-3">
                             @auth
-                                @php
-                                    $role = Auth::user()->getRoleNames()['0'];
-                                @endphp
-                                <a href="{{ route($role . '.dashboard') }}"
+                                <a href="{{ route('dashboard') }}"
                                     class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
                                     Dashboard
                                 </a>
