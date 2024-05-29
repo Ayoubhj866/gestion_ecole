@@ -7,7 +7,7 @@
 @endphp
 
 <li>
-    <a href="{{ route('dashboard') }}" {{ $attributes->merge(['class' => $classes]) }}>
+    <a {{ $attributes->merge(['class' => $classes]) }}>
         {{ $svg }}
         {{ $slot }}
     </a>

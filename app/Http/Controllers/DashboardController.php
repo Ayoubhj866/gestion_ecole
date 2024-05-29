@@ -12,15 +12,16 @@ class DashboardController extends Controller
 {
     public function dashboard()
     {
-        $role = Auth::user()->getRoleNames()['0'];
+        $role = Auth::user()->getRoleNames()['0']; // soit admin, eleve ou instructeur
 
         $route = $role.'.dashboard';
 
         return view($route, [
-            'instructeurs' => $role === 'admin' ? Instructeur::count() : null,
-            'eleves' => $role === 'admin' ? Eleve::count() : null,
-            'matieres' => $role === 'admin' ? Matiere::count() : null,
-            'filieres' => $role === 'admin' ? Filiere::count() : null,
+            // seulement pour l'admin
+            'count_instructeurs' => $role === 'admin' ? Instructeur::count() : null,
+            'count_eleves' => $role === 'admin' ? Eleve::count() : null,
+            'count_matieres' => $role === 'admin' ? Matiere::count() : null,
+            'count_filieres' => $role === 'admin' ? Filiere::count() : null,
         ]);
     }
 }
