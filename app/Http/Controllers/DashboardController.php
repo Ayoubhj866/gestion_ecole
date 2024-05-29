@@ -2,16 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Eleve;
+use App\Models\Filiere;
+use App\Models\Instructeur;
+use App\Models\Matiere;
 use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
     public function dashboard()
     {
-        $userConnected = Auth::user();
+        $role = Auth::user()->getRoleNames()['0'];
 
-        $route = $userConnected->getRoleNames()['0'].'.dashboard';
+        $route = $role.'.dashboard';
 
-        return view($route);
+        return view($route, [
+            'instructeurs' => $role === 'admin' ? Instructeur::count() : null,
+            'eleves' => $role === 'admin' ? Eleve::count() : null,
+            'matieres' => $role === 'admin' ? Matiere::count() : null,
+            'filieres' => $role === 'admin' ? Filiere::count() : null,
+        ]);
     }
 }

@@ -8,6 +8,7 @@ use App\Models\Eleve;
 use App\Models\Filiere;
 use App\Models\Instructeur;
 use App\Models\Matiere;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,24 +18,22 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        // create roles (the first is admin)
         $this->call(RoleSeeder::class);
-        $user = $this->call(UserSeeder::class);
 
-        Eleve::factory(20)->create();
-        $instructeurs = Instructeur::factory(5)->create();
-        $matieres = Matiere::factory(20)->create();
-        $filieres = Filiere::factory(4)->create();
+        // Create user with admin role
+        User::factory()->count(1)->create([
+            'name' => 'ayoub',
+            'email' => 'ayoub@gmail.com',
+        ])->each(function (User $user) {
+            $user->assignRole('admin');
+        });
 
-        // attacher matières et filière
-        foreach ($matieres as $matiere) {
-            $filiere = Filiere::find(rand(1, 4));
-            $matiere->filieres()->attach($filiere);
-        }
-
-        // attacher les instructeur avec les matières
-        foreach ($matieres as $matiere) {
-            $instructeur = Instructeur::find(rand(1, 5));
-            $matiere->instructeurs()->attach($instructeur);
-        }
+        Instructeur::factory()
+            ->count(5)
+            ->has(Matiere::factory()->count(rand(1, 2)) // affecter 1 ou 2 matière pour chaque instructeur
+                ->has(Filiere::factory()->count(rand(1, 2)) // une matière peut être dans une ou 2 filières
+                    ->has(Eleve::factory()->count(rand(20, 50))) // crier un nombre d'èléves entre 20 et 50 pour chaque filière
+                ))->create();
     }
 }
