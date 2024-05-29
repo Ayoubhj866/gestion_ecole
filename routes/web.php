@@ -2,12 +2,14 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FiliereController;
+use App\Http\Controllers\MatiereController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 // ------------ Group admin
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('/filieres', FiliereController::class);
+    Route::resource('/matieres', MatiereController::class);
 });
 
 // --------Home page
