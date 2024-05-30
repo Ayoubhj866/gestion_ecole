@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FiliereController;
+use App\Http\Controllers\InstructeurController;
 use App\Http\Controllers\MatiereController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -10,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('/filieres', FiliereController::class);
     Route::resource('/matieres', MatiereController::class);
+    Route::resource('/instructeurs', InstructeurController::class);
 });
 
 // --------Home page

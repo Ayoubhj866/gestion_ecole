@@ -8,7 +8,8 @@
             <div class="grid grid-cols-1 gap-8 p-4 lg:grid-cols-2 xl:grid-cols-4">
 
                 {{-- instructeurs stat --}}
-                <x-flowbite.cart-stat class="cursor-pointer" title="Instructeurs" count="{{ $count_instructeurs }}">
+                <x-flowbite.cart-stat class="cursor-pointer" href="{{ route('instructeurs.index') }}" title="Instructeurs"
+                    count="{{ $count_instructeurs }}">
                     <span class="text-gray-700">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             class="w-12 h-12 text-gray-300 dark:text-primary-dark" stroke-width="1.5"
@@ -32,7 +33,8 @@
                 </x-flowbite.cart-stat>
 
                 {{-- Matières stat --}}
-                <x-flowbite.cart-stat class="cursor-pointer" title="Matières" count="{{ $count_matieres }}">
+                <x-flowbite.cart-stat class="cursor-pointer" href="{{ route('matieres.index') }}" title="Matières"
+                    count="{{ $count_matieres }}">
                     <span class="text-gray-700">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gray-300 dark:text-primary-dark"
                             fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
