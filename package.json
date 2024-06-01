@@ -16,6 +16,7 @@
         "vite": "^5.0"
     },
     "dependencies": {
+        "color": "^4.2.3",
         "flowbite": "^2.3.0"
     }
 }
