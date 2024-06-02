@@ -4,10 +4,10 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\Eleve;
 use App\Models\Filiere;
 use App\Models\Instructeur;
 use App\Models\Matiere;
+use App\Models\Student;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
             ->count(5)
             ->has(Matiere::factory()->count(rand(1, 2)) // affecter 1 ou 2 matière pour chaque instructeur
                 ->has(Filiere::factory()->count(rand(1, 2)) // une matière peut être dans une ou 2 filières
-                    ->has(Eleve::factory()->count(rand(20, 50))) // crier un nombre d'èléves entre 20 et 50 pour chaque filière
+                    ->has(Student::factory()->count(rand(20, 50))) // crier un nombre d'èléves entre 20 et 50 pour chaque filière
                 ))->create();
     }
 }

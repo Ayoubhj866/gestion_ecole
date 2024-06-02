@@ -12,13 +12,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('eleves', function (Blueprint $table) {
+        Schema::create('students', function (Blueprint $table) {
             $table->id();
             // un eleve appartien à une filière
             $table->foreignIdFor(Filiere::class)->constrained()->cascadeOnDelete(); // un eleve appartien à une filière
             $table->string('nom');
             $table->string('prenom');
-            $table->dateTime('date_naissance');
             $table->string('adresse');
             $table->string('tel');
             $table->string('sexe');
@@ -33,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('eleves');
+        Schema::dropIfExists('students');
     }
 };

@@ -6,6 +6,7 @@ use App\Models\Eleve;
 use App\Models\Filiere;
 use App\Models\Instructeur;
 use App\Models\Matiere;
+use App\Models\Student;
 use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
@@ -28,7 +29,7 @@ class DashboardController extends Controller
         return view($route, [
             // seulement pour l'admin
             'count_instructeurs' => $role === 'admin' ? Instructeur::count() : null,
-            'count_eleves' => $role === 'admin' ? Eleve::count() : null,
+            'count_eleves' => $role === 'admin' ? Student::count() : null,
             'count_matieres' => $role === 'admin' ? Matiere::count() : null,
             'count_filieres' => $role === 'admin' ? Filiere::count() : null,
             'students' => $students,

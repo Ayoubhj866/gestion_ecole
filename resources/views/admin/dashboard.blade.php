@@ -57,9 +57,7 @@
                 </x-flowbite.cart-stat>
 
             </div>
-
         </div>
-
 
         @section('scripts')
             <script>

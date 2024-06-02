@@ -13,9 +13,9 @@ class Filiere extends Model
 
     protected $guarded = ['id'];
 
-    public function eleves(): HasMany
+    public function students(): HasMany
     {
-        return $this->hasMany(Eleve::class);
+        return $this->hasMany(Student::class);
     }
 
     public function matiere(): BelongsToMany

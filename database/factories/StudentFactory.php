@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Eleve>
  */
-class EleveFactory extends Factory
+class StudentFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -23,7 +23,6 @@ class EleveFactory extends Factory
                 return Filiere::factory()->create()->id;
             },
             'prenom' => fake()->lastName(),
-            'date_naissance' => fake()->dateTimeBetween('-30 years', '-18 years')->format('Y-m-d'),
             'tel' => fake()->phoneNumber(),
             'adresse' => fake()->address(),
             'sexe' => fake()->randomElement(['m', 'f']),
