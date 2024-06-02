@@ -52,7 +52,7 @@ class FiliereController extends Controller
      */
     public function edit(Filiere $filiere)
     {
-        return view('admin.filieres.adit', ['filiere' => $filiere]);
+        return view('admin.filieres.edit', ['filiere' => $filiere]);
     }
 
     /**

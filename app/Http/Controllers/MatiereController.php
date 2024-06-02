@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MatiereRequest;
 use App\Models\Filiere;
 use App\Models\Matiere;
-use Illuminate\Http\Request;
 
 class MatiereController extends Controller
 {
@@ -15,7 +15,12 @@ class MatiereController extends Controller
     {
         return view('admin.matieres.matieres', [
             'matieres' => Matiere::orderBy('created_at', 'desc')->paginate(8),
-            'filieres' => Filiere::pluck('name', 'id'),
+            'filieres' => Filiere::all()->map(function ($filiere) {
+                return [
+                    'filiere' => $filiere->name,
+                    'key' => (string) $filiere->id,
+                ];
+            })->toArray(),
         ]);
     }
 
@@ -30,18 +35,15 @@ class MatiereController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(MatiereRequest $request)
     {
-        $validatedData = $request->validate([
-            'name' => ['required', 'string', 'min:4', 'max:50'],
-            'filiere' => ['array', 'required', 'exists:filieres,id'],
-        ]);
+        $validatedData = $request->validated();
 
         // crier la matière
         $matiere = Matiere::create($validatedData);
 
         //attaché la matière avec des filières
-        $matiere->filieres()->attach($validatedData['filiere']);
+        $matiere->filieres()->attach($validatedData['filieres']);
 
         return redirect()->route('matieres.index')->with('success', 'Matière criée avec succée');
     }
@@ -59,30 +61,33 @@ class MatiereController extends Controller
      */
     public function edit(Matiere $matiere)
     {
-        return view('admin.matieres.adit', [
+        return view('admin.matieres.edit', [
             'matiere' => $matiere,
-            'filieresSelected' => $matiere->filieres()->pluck('filiere_id'), // filiere_id pivot table
-            'filieres' => Filiere::pluck('name', 'id'),
+            'filieresSelected' => $matiere->filieres()->pluck('filiere_id'),
+            'filieres' => Filiere::all()->map(function ($filiere) {
+                return [
+                    'filiere' => $filiere->name,
+                    'key' => (string) $filiere->id,
+                ];
+            })->toArray(),
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Matiere $matiere)
+    public function update(MatiereRequest $request, Matiere $matiere)
     {
-        $validatedData = $request->validate([
-            'name' => ['required', 'string', 'min:4', 'max:50'],
-            'filiere' => ['array', 'required'],
-        ]);
+        //récuperer les données validés
+        $validatedData = $request->validated();
 
         //modification
         $matiere->update($validatedData);
 
         // asynchronisation
-        $matiere->filieres()->sync($validatedData['filiere']);
+        $matiere->filieres()->sync($validatedData['filieres']);
 
-        return redirect()->route('matieres.index')->with('success', 'Matiere modifiée');
+        return redirect()->route('matieres.index')->with('success', 'Matière modifiée');
     }
 
     /**

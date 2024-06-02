@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('eleves', function (Blueprint $table) {
             $table->id();
             // un eleve appartien à une filière
-            $table->foreignIdFor(Filiere::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Filiere::class)->constrained()->cascadeOnDelete(); // un eleve appartien à une filière
             $table->string('nom');
             $table->string('prenom');
             $table->dateTime('date_naissance');

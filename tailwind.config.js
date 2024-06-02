@@ -13,9 +13,14 @@ export default {
 
     theme: {
         extend: {
-
-
                 colors: {
+                    primary: colors.indigo,
+                    secondary: colors.zinc,
+                    dark: colors.gray,
+                    success: colors.green,
+                    error: colors.rose,
+                    warning: colors.orange,
+                    info: colors.blue,
                     transparent: 'transparent',
                     current: 'currentColor',
                     'white': '#ffffff',

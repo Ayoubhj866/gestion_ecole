@@ -59,35 +59,11 @@
             </div>
 
         </div>
-        {{-- <x-bladewind::centered-content size="xxl">
-
-            <x-bladewind::card>
-
-                <form action="" method="get">
-                    <x-bladewind::select name="students" placeholder="Assign task to" label_key="name" value_key="id"
-                        image_key="picture" searchable="true" multiple="true" :data="$students" />
-
-                    <x-bladewind::button color="black" can_submit='true'>Test</x-bladewind::button>
-                </form>
-            </x-bladewind::card>
 
 
-            <div class="mt-10">
-                <x-bladewind.button has_spinner="true" name="error"
-                    onclick="showNotification(
-                    'Delete Failed',
-                    'Your message could not be deleted. Try again',
-                    'error'); showButtonSpinner('.error')">
-                    error
-                </x-bladewind.button>
-            </div>
-
-            <x-bladewind::notification position="bottom right" />
-
-            @section('scripts')
-                <script>
-                    showNotification('title', 'message', 'error', dismiss_in);
-                </script>
-            @endsection
-        </x-bladewind::centered-content> --}}
+        @section('scripts')
+            <script>
+                showNotification('title', 'message', 'error', dismiss_in);
+            </script>
+        @endsection
 </x-app-layout>

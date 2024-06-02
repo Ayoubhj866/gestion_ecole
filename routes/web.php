@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EleveController;
 use App\Http\Controllers\FiliereController;
 use App\Http\Controllers\InstructeurController;
 use App\Http\Controllers\MatiereController;
@@ -12,6 +13,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('/filieres', FiliereController::class);
     Route::resource('/matieres', MatiereController::class);
     Route::resource('/instructeurs', InstructeurController::class);
+    // Route::resource('/students', EleveController::class);
 });
 
 // --------Home page

@@ -27,10 +27,23 @@ class UpdateInstructeur extends FormRequest
             'prenom' => ['required', 'string', 'min:4', 'max:55'],
             'cin' => ['required', 'string', 'min:6', 'max:8'],
             'adresse' => ['required', 'string', 'min:6', 'max:255'],
-            'tel' => ['string', 'required', 'min:10', 'max:13'],
+            'tel' => ['string', 'required', 'min:13', 'max:13'],
             'email' => ['email', 'required', Rule::unique('instructeurs')->ignore($this->instructeur)],
             'sexe' => ['required', 'string', 'min:1', 'max:1'],
             'matieres' => ['required', 'exists:matieres,id'],
         ];
+    }
+
+    /**
+     * prepareForValidation : prepare data for validation
+     *
+     * @return void
+     */
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'matieres' => explode(',', $this->input('matieres')),
+            'tel' => '+212'.$this->input('tel'),
+        ]);
     }
 }

@@ -26,7 +26,12 @@ class InstructeurController extends Controller
     public function create()
     {
         return view('admin.instructeurs.create', [
-            'matieres' => Matiere::pluck('name', 'id'),
+            'matieres' => Matiere::all()->map(function ($matiere) {
+                return [
+                    'matiere' => $matiere->name,
+                    'key' => $matiere->id,
+                ];
+            })->toArray(),
         ]);
     }
 
@@ -61,8 +66,13 @@ class InstructeurController extends Controller
     {
         return view('admin.instructeurs.edit', [
             'instructeur' => $instructeur,
-            'matieres' => Matiere::pluck('name', 'id'),
             'matieresSelected' => $instructeur->matieres()->pluck('matiere_id'), // les matiéres déja attribuées à l'instructeur
+            'matieres' => Matiere::all()->map(function ($matiere) {
+                return [
+                    'matiere' => $matiere->name,
+                    'key' => $matiere->id,
+                ];
+            })->toArray(),
         ]);
     }
 

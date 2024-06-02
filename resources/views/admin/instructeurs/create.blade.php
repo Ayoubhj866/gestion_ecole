@@ -1,95 +1,90 @@
 <x-app-layout>
     <x-flowbite.title>
         Ajouter un instructeur
-
-        <x-flowbite.blue-button class="float-end" type="link"
-            href="{{ route('instructeurs.index') }}">Annuler</x-flowbite.blue-button>
     </x-flowbite.title>
 
     <div class="p-4 border-gray-200 border-dashed rounded-lg mt-4border-2 dark:border-gray-700">
         {{-- form create --}}
-        <div class="max-w-2xl mx-auto">
+        <div class="max-w-6xl mx-auto">
             <form action="{{ route('instructeurs.store') }}" method="POST" class="p-4 space-y-4 ">
                 @csrf
-                <!-- nom de instructeur -->
-                <div>
-                    <x-input-label for="nom" :value="__('Nom Instructeur')" />
-                    <x-text-input id="nom" class="block w-full mt-1" type="text" name="nom"
-                        :value="old('nom')" required autofocus placeholder="Nom de Instructeur" />
-                    <x-input-error :messages="$errors->get('nom')" class="mt-2" />
-                </div>
 
-                <!-- prenom de instructeur -->
-                <div>
-                    <x-input-label for="prenom" :value="__('Prénom Instructeur')" />
-                    <x-text-input id="prenom" class="block w-full mt-1" type="text" name="prenom"
-                        :value="old('prenom')" required autofocus placeholder="Nom d'Instructeur" />
-                    <x-input-error :messages="$errors->get('prenom')" class="mt-2" />
-                </div>
+                <div class="grid gap-4 grid-col sm:grid-cols-2">
 
-                <!-- CIN de instructeur -->
-                <div>
-                    <x-input-label for="cin" :value="__('Cin')" />
-                    <x-text-input id="cin" class="block w-full mt-1" type="text" name="cin"
-                        :value="old('cin')" required autofocus placeholder="Numéro de la carte nationale" />
-                    <x-input-error :messages="$errors->get('cin')" class="mt-2" />
-                </div>
+                    {{-- left --}}
+                    <div>
+                        <!-- nom de l'instructeur -->
+                        <div>
+                            <x-bladewind::input name="nom" required='true' type="text" :value="old('nom')"
+                                label="Nom" prefix_is_icon="false" prefix_icon_css="text-gray-800" viewable="true" />
+                            <x-input-error :messages="$errors->get('nom')" class="mt-2" />
+                        </div>
 
-                <!-- address de instructeur -->
-                <div>
-                    <x-input-label for="adresse" :value="__('Adresse')" />
-                    <x-text-input id="adresse" class="block w-full mt-1" type="text" name="adresse"
-                        :value="old('adresse')" required autofocus placeholder="Rue 108 hay karima Salé" />
-                    <x-input-error :messages="$errors->get('adresse')" class="mt-2" />
-                </div>
 
-                <!-- Tel de instructeur -->
-                <div>
-                    <x-input-label for="tel" :value="__('Numéro Tél')" />
-                    <x-text-input id="tel" class="block w-full mt-1" type="text" name="tel"
-                        :value="old('tel')" required autofocus placeholder="Nom d'Instructeur" />
-                    <x-input-error :messages="$errors->get('tel')" class="mt-2" />
-                </div>
+                        <!-- prenom de instructeur -->
+                        <div>
+                            <x-bladewind::input name="prenom" required='true' autofocus type="text"
+                                :value="old('prenom')" label="Prénom" viewable="true" />
+                            <x-input-error :messages="$errors->get('prenom')" class="mt-2" />
+                        </div>
 
-                <!-- Email de instructeur -->
-                <div>
-                    <x-input-label for="email" :value="__('Email')" />
-                    <x-text-input id="email" class="block w-full mt-1" type="email" name="email"
-                        :value="old('email')" required autofocus placeholder="gmail@exemple.com" />
-                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
-                </div>
+                        <!-- CIN de instructeur -->
+                        <div>
+                            <x-bladewind::input name="cin" required='true' autofocus type="text"
+                                :value="old('cin')" label="Numéro de la CIN" viewable="true" />
+                            <x-input-error :messages="$errors->get('cin')" class="mt-2" />
+                        </div>
 
-                <!-- Sexe -->
 
-                <div class="flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700">
-                    <input id="bordered-radio-1" checked type="radio" value="m" name="sexe"
-                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                    <label for="bordered-radio-1"
-                        class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Masculin</label>
-                </div>
-                <div class="flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700">
-                    <input id="bordered-radio-2" type="radio" value="f" name="sexe"
-                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                    <label for="bordered-radio-2"
-                        class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Féminin</label>
-                </div>
+                        <!-- address de instructeur -->
+                        <div>
+                            <x-bladewind::input name="adresse" required='true' autofocus type="text"
+                                :value="old('adresse')" label="Adresse" viewable="true" />
+                            <x-input-error :messages="$errors->get('adresse')" class="mt-2" />
+                        </div>
+                    </div>
 
-                <!-- Matières -->
-                <div>
-                    <x-flowbite.select id="name" label="Matière" name="matieres[]" multiple>
-                        <option value="" disabled selected>Selectionnez les matières</option>
-                        @foreach ($matieres as $key => $matiere)
-                            <option @selected(in_array($key, old('matieres', []))) class="py-4" value="{{ $key }}">
-                                {{ $matiere }}</option>
-                        @endforeach
-                    </x-flowbite.select>
-                    <x-input-error :messages="$errors->get('matieres')" class="mt-2" />
-                </div>
+                    {{-- right --}}
+                    <div>
+                        <!-- Tel de instructeur -->
+                        <div>
+                            <x-bladewind::input prefix="+212" name="tel" required='true' autofocus type="text"
+                                :value="old('tel')" label="Numéro de Télephone" viewable="true" prefix_is_icon="false" />
+                            <x-input-error :messages="$errors->get('tel')" class="mt-2" />
+                        </div>
 
-                <!-- Button -->
-                <div>
-                    <x-flowbite.blue-button type="submit">Crier</x-flowbite.blue-button>
-                </div>
+                        <!-- Email de instructeur -->
+                        <div>
+                            <x-bladewind::input name="email" required='true' autofocus type="email"
+                                :value="old('email')" label="Adresse email" viewable="true" prefix="envelope"
+                                prefix_is_icon="true" />
+                            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                        </div>
+
+                        <!-- Sexe -->
+                        <x-bladewind::radio-button label="Masculin" value="m" :checked="true" name="sexe" />
+                        <x-bladewind::radio-button label="Féminin" value="f" :checked="old('sexe') === 'f'" name="sexe" />
+
+                        <!-- Matières -->
+                        <div>
+                            <x-bladewind::select name="matieres" searchable="true" label_key="matiere" value_key="key"
+                                multiple="true" :selected_value="old('matieres')" :data="$matieres" />
+                            <x-input-error :messages="$errors->get('matieres')" class="mt-2" />
+                        </div>
+
+                        <div class="flex items-center justify-end gap-2">
+                            <x-bladewind.button name="annuler" type="secondary" tag="a"
+                                href="{{ route('instructeurs.index') }}" outline has_spinner="true" can_submit="true"
+                                class="mt-3" onclick="showButtonSpinner('.annuler')">
+                                {{ __('Annuler') }}
+                            </x-bladewind.button>
+
+                            <x-bladewind.button name="save-instructeur" has_spinner="true" color="blue"
+                                can_submit="true" class="mt-3" onclick="showButtonSpinner('.save-instructeur')">
+                                {{ __('Ajouter') }}
+                            </x-bladewind.button>
+                        </div>
+                    </div>
             </form>
         </div>
     </div>
