@@ -7,6 +7,7 @@
     <div class="p-4 border-gray-200 border-dashed rounded-lg mt-4border-2 dark:border-gray-700">
         <div class="mt-2">
 
+
             <div class="grid gap-4 px-8 py-4 bg-white grid-col md:grid-cols-2 dark:bg-gray-800">
                 {{-- form create --}}
                 <div class="max-w-sm">
@@ -23,7 +24,7 @@
 
                         <!-- Button -->
                         <div>
-                            <x-bladewind::button can_submit="true" radius="medium" color="blue" has_spinner="true"
+                            <x-bladewind::button can_submit="true" radius="medium" color="black" has_spinner="true"
                                 onclick="showButtonSpinner('.save-filiere')"
                                 name="save-filiere">Crier</x-bladewind::button>
                         </div>
@@ -61,9 +62,28 @@
                 </x-bladewind::table>
             </div>
 
+
+
         </div>
     </div>
 
+    <x-bladewind::notification />
+
+    <script>
+        checkPinAndClear = (code) => {
+            console.log(code);
+            if (code !== 2024) {
+
+                showSpinner('name');
+                setTimeout((e) => {
+                    hideSpinner('name');
+                    clearPin('name');
+                    showNotification('Wrong Code', 'Please enter your code again', 'error');
+                    // showPinError('name');
+                }, 1500);
+            }
+        }
+    </script>
 
 
 </x-app-layout>

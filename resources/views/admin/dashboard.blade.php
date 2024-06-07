@@ -2,10 +2,10 @@
 
     <x-flowbite.title>Dashboard</x-flowbite.title>
 
-    <div class="p-4 border-gray-200 border-dashed rounded-lg mt-4border-2 dark:border-gray-700">
-        <div class="mt-2">
+    <div class="border-gray-200 border-dashed rounded-lg p-y mt-4border-2 dark:border-gray-700">
+        <div class="mt-10">
             <!-- State cards -->
-            <div class="grid grid-cols-1 gap-8 p-4 lg:grid-cols-2 xl:grid-cols-4">
+            <div class="grid grid-cols-1 gap-8 lg:grid-cols-2 xl:grid-cols-4">
 
                 {{-- instructeurs stat --}}
                 <x-flowbite.cart-stat class="cursor-pointer" href="{{ route('instructeurs.index') }}" title="Instructeurs"

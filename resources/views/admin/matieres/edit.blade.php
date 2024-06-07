@@ -1,7 +1,7 @@
 <x-app-layout>
 
     <x-flowbite.title>
-        Modifier la Filière
+        Modifier la MAtière
     </x-flowbite.title>
 
     {{-- form create --}}
@@ -27,7 +27,7 @@
             <div>
                 <x-bladewind::button radius="medium" name="save-matiere" has_spinner="true"
                     onclick="showButtonSpinner('.save-matiere')" can_submit='true'
-                    color="green">Modifier</x-bladewind::button>
+                    color="black">Modifier</x-bladewind::button>
             </div>
         </form>
     </div>

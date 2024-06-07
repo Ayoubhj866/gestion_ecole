@@ -16,8 +16,9 @@
                     <div>
                         <!-- nom de l'eleve -->
                         <div>
-                            <x-bladewind::input name="nom" required='true' type="text" :value="old('nom')"
-                                label="Nom" prefix_is_icon="false" prefix_icon_css="text-gray-800" viewable="true" />
+                            <x-bladewind::input name="nom" required='true' label="Nom" type="text"
+                                :value="old('nom')" prefix_is_icon="false" prefix_icon_css="text-gray-800"
+                                viewable="true" />
                             <x-input-error :messages="$errors->get('nom')" class="mt-2" />
                         </div>
 
@@ -82,7 +83,7 @@
                                 {{ __('Annuler') }}
                             </x-bladewind.button>
 
-                            <x-bladewind.button name="save-eleve" has_spinner="true" color="blue" can_submit="true"
+                            <x-bladewind.button name="save-eleve" has_spinner="true" color="black" can_submit="true"
                                 class="mt-3" onclick="showButtonSpinner('.save-eleve')">
                                 {{ __('Crier') }}
                             </x-bladewind.button>

@@ -23,41 +23,40 @@
 
                         <!-- prenom de instructeur -->
                         <div>
-                            <x-bladewind::input name="prenom" required='true' autofocus type="text"
-                                :value="old('prenom')" label="Prénom" viewable="true" />
+                            <x-bladewind::input name="prenom" required='true' type="text" :value="old('prenom')"
+                                label="Prénom" viewable="true" />
                             <x-input-error :messages="$errors->get('prenom')" class="mt-2" />
                         </div>
 
                         <!-- CIN de instructeur -->
                         <div>
-                            <x-bladewind::input name="cin" required='true' autofocus type="text"
-                                :value="old('cin')" label="Numéro de la CIN" viewable="true" />
+                            <x-bladewind::input name="cin" required='true' type="text" :value="old('cin')"
+                                label="Numéro de la CIN" viewable="true" />
                             <x-input-error :messages="$errors->get('cin')" class="mt-2" />
                         </div>
 
 
                         <!-- address de instructeur -->
                         <div>
-                            <x-bladewind::input name="adresse" required='true' autofocus type="text"
-                                :value="old('adresse')" label="Adresse" viewable="true" />
+                            <x-bladewind::input name="adresse" required='true' type="text" :value="old('adresse')"
+                                label="Adresse" viewable="true" />
                             <x-input-error :messages="$errors->get('adresse')" class="mt-2" />
                         </div>
                     </div>
 
                     {{-- right --}}
-                    <div>
+                    <div class="text-gray-500 dark:text-white">
                         <!-- Tel de instructeur -->
                         <div>
-                            <x-bladewind::input prefix="+212" name="tel" required='true' autofocus type="text"
+                            <x-bladewind::input prefix="+212" name="tel" required='true' type="text"
                                 :value="old('tel')" label="Numéro de Télephone" viewable="true" prefix_is_icon="false" />
                             <x-input-error :messages="$errors->get('tel')" class="mt-2" />
                         </div>
 
                         <!-- Email de instructeur -->
                         <div>
-                            <x-bladewind::input name="email" required='true' autofocus type="email"
-                                :value="old('email')" label="Adresse email" viewable="true" prefix="envelope"
-                                prefix_is_icon="true" />
+                            <x-bladewind::input name="email" required='true' type="email" :value="old('email')"
+                                label="Adresse email" viewable="true" prefix="envelope" prefix_is_icon="true" />
                             <x-input-error :messages="$errors->get('email')" class="mt-2" />
                         </div>
 
@@ -79,7 +78,7 @@
                                 {{ __('Annuler') }}
                             </x-bladewind.button>
 
-                            <x-bladewind.button name="save-instructeur" has_spinner="true" color="blue"
+                            <x-bladewind.button name="save-instructeur" has_spinner="true" color="black"
                                 can_submit="true" class="mt-3" onclick="showButtonSpinner('.save-instructeur')">
                                 {{ __('Ajouter') }}
                             </x-bladewind.button>

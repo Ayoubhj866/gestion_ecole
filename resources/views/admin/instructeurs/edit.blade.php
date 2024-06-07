@@ -80,7 +80,7 @@
                                 {{ __('Annuler') }}
                             </x-bladewind.button>
 
-                            <x-bladewind.button name="save-instructeur" has_spinner="true" color="blue"
+                            <x-bladewind.button name="save-instructeur" has_spinner="true" color="black"
                                 can_submit="true" class="mt-3" onclick="showButtonSpinner('.save-instructeur')">
                                 {{ __('Modifier') }}
                             </x-bladewind.button>

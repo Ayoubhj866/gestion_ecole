@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ExportController;
 use App\Http\Controllers\FiliereController;
 use App\Http\Controllers\InstructeurController;
 use App\Http\Controllers\MatiereController;
@@ -14,6 +15,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('/matieres', MatiereController::class);
     Route::resource('/instructeurs', InstructeurController::class);
     Route::resource('/students', StudentController::class);
+
+    //export pdf
+    Route::get('/{modelName}/export/pdf', [ExportController::class, 'exportPdf'])->name('export_pdf');
+    Route::get('/{modelName}/export/excle', [ExportController::class, 'exportExcel'])->name('export_excel');
 });
 
 // --------Home page

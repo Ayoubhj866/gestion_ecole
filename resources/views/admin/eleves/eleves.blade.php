@@ -7,10 +7,25 @@
         </span>
     </x-flowbite.title>
 
-    <div class="p-4 border-gray-200 border-dashed rounded-lg text-end mt-4border-2 dark:border-gray-700">
+    <div
+        class="flex items-center justify-end gap-4 p-4 border-gray-200 border-dashed rounded-lg text-end mt-4border-2 dark:border-gray-700">
         <x-bladewind.button name="new-eleve" tag="a" href="{{ route('students.create') }}" has_spinner="true"
-            color="black" class="float-end" can_submit="true" class="mt-3" onclick="showButtonSpinner('.new-eleve')">
+            color="black" class="float-end" can_submit="true" onclick="showButtonSpinner('.new-eleve')">
             {{ __('Ajouter un eleve') }} </x-bladewind.button>
+
+        <x-bladewind::dropmenu>
+            <x-slot:trigger>
+                <x-bladewind.button type="primary" icon="arrow-down-on-square-stack" icon_right="true">
+                    Export
+                </x-bladewind.button>
+            </x-slot:trigger>
+            <x-bladewind::dropmenu-item class="">
+                <a href="{{ route('export_excel', 'students') }}" target="_black">Export excel</a>
+            </x-bladewind::dropmenu-item>
+            <x-bladewind::dropmenu-item>
+                <a href="{{ route('export_pdf', 'students') }}" target="_black">Export Pdf</a>
+            </x-bladewind::dropmenu-item>
+        </x-bladewind::dropmenu>
     </div>
 
 

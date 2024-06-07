@@ -35,14 +35,15 @@
                 <x-input-error :messages="$errors->userDeletion->get('password')" class="mt-2" />
             </div>
 
-            <div class="flex justify-end mt-6">
-                <x-secondary-button x-on:click="$dispatch('close')">
-                    {{ __('Cancel') }}
-                </x-secondary-button>
+            <div class="flex justify-end gap-4 mt-6">
 
-                <x-danger-button class="ms-3">
-                    {{ __('Delete Account') }}
-                </x-danger-button>
+                <x-bladewind.button x-on:click="$dispatch('close')" x-data="" type="green"
+                    can_submit="false">{{ __('Cancel') }}</x-bladewind.button>
+
+
+                <x-bladewind.button x-data="" color="red"
+                    can_submit="true">{{ __('Delete Account') }}</x-bladewind.button>
+
             </div>
         </form>
     </x-modal>

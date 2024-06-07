@@ -31,7 +31,7 @@
                         <div>
                             <x-bladewind::button name="save-matiere" has_spinner="true"
                                 onclick="showButtonSpinner('.save-matiere')" can_submit='true'
-                                color="blue">Crier</x-bladewind::button>
+                                color="black">Crier</x-bladewind::button>
                         </div>
                     </form>
                 </div>

@@ -21,7 +21,7 @@
 
             <!-- Button -->
             <div>
-                <x-bladewind::button can_submit="true" radius="medium" color="green" has_spinner="true"
+                <x-bladewind::button can_submit="true" radius="medium" color="black" has_spinner="true"
                     onclick="showButtonSpinner('.save-filiere')" name="save-filiere">Modifier</x-bladewind::button>
             </div>
         </form>
